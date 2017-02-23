@@ -3,6 +3,11 @@ angular.module('app', [])
     $scope.title = "jsTree tests";
     $scope.nodId = 'j1_2';
     $scope.treeView = null;
+    $scope.indexeringPost = {};
+    $scope.setIndexeringPost = (res) => {
+        console.log('setIndexerinPost was called', res.node);
+        $scope.indexeringPost = {id: res.node.id, label: res.node.text};
+    }
 
     $scope.antalToppNoder = 100;
 
@@ -22,10 +27,12 @@ angular.module('app', [])
             console.log('tree was refreshed')
             $('#jstree').jstree('open_all');
         })
-        .on('select_node.jstree', function(node, selected, event) {
+        .on('select_node.jstree', function(event, node) {
             console.log('node', node);
-            console.log('selected', selected);
             console.log('event', event);
+            console.log('$scope',angular.element('#jstree').scope )
+            angular.element('#jstree').scope().setIndexeringPost(node);
+            angular.element('#jstree').scope().$apply();
         });
 });
 
