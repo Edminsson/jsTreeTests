@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/jsTree/dist/themes/default/style.css">
+</head>
+<body ng-controller="mainController">
+    <h2>{{title}}</h2>
+
+    <div>
+        <label for="antal"></label>
+        <input type="text" name="antal" ng-model="antalToppNoder">
+        <button ng-click="getCurrentTree()">Get tree</button>
+    </div>
+    <div>
+        <label for="antal"></label>
+        <input type="text" name="nodeId" ng-model="nodId">
+        <button ng-click="selectNode(nodId)">Välj nod</button>
+    </div>
+    <div>
+        <button ng-click="changeDefaults()">Change defaults</button>
+    </div>
+    
+    <div id="jstree"></div>
+
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="lib/jsTree/dist/jstree.js"></script>
+    <script src="app.js"></script>
+    <script src="dataFactory.js"></script>
+</body>
+</html>
