@@ -152,13 +152,17 @@ angular.module('app')
   var automaticId = 0;
   function getNode() {
     automaticId ++;
+    var li_attr = (Math.floor(Math.random() * 10) > 5) ? {"class": "axel"} : null;
+    var kontroll = Math.floor(Math.random() * 10) > 5;
     var node = {
-        text: 'Node_' + automaticId,
-        key: automaticId,
-        expanded: true,
+        id: automaticId,
+        text: 'node_' + automaticId,
+        icon: "/img/settings.png",
+        data: { kontroll: kontroll},
+        li_attr: li_attr,
         children: []
     };
-    
+
     while (Math.floor(Math.random() * 10) > 5) {
       node.children.push(getNode());
     }

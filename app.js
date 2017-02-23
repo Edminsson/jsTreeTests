@@ -6,10 +6,12 @@ angular.module('app', [])
 
     $scope.antalToppNoder = 100;
 
-    var treeData = dataFactory.generateTree(2,false);
+    var treeData = dataFactory.generateTree(2,true);
     $timeout(()=> {
-        $('#jstree').jstree({ 'core' : {
-            'data' : treeData
+        $('#jstree').jstree({
+            plugins: ["addHTML"],
+            core : {
+                'data' : treeData
             } 
         })
         .on('loaded.jstree', function() {
@@ -47,6 +49,21 @@ angular.module('app', [])
         $('#jstree').jstree();
     };
 
+    $.jstree.plugins.addHTML = function (options, parent) {
+        this.redraw_node = function(obj, deep,
+                                    callback, force_draw) {
+            obj = parent.redraw_node.call(
+                this, obj, deep, callback, force_draw
+            );
+            if (obj) {
+                var node = this.get_node(jQuery(obj).attr('id'));
+                if (node.data && node.data.kontroll) {
+                    jQuery(obj).append('<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>');
+                }
+            }
+            return obj;
+        };
+    };
 
 
 });

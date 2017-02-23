@@ -1,0 +1,7 @@
+.axel {
+    color:blue;
+}
+.xxxaxel:after {
+  font-family: "Glyphicons Halflings";
+  content: "\e105";
+}
