@@ -157,11 +157,18 @@ angular.module('app')
     var node = {
         id: automaticId,
         text: 'node_' + automaticId,
-        icon: "/img/settings.png",
         data: { kontroll: kontroll},
         li_attr: li_attr,
         children: []
     };
+    // var node = {
+    //     id: automaticId,
+    //     text: 'node_' + automaticId,
+    //     icon: "/img/settings.png",
+    //     data: { kontroll: kontroll},
+    //     li_attr: li_attr,
+    //     children: []
+    // };
 
     while (Math.floor(Math.random() * 10) > 5) {
       node.children.push(getNode());

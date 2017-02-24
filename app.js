@@ -16,7 +16,13 @@ angular.module('app', [])
         $('#jstree').jstree({
             plugins: ["addHTML"],
             core : {
-                'data' : treeData
+                'data' : treeData,
+                'themes': {
+                    'dots': false,
+                    'name': 'proton',
+                    'responsive': true
+                }
+
             } 
         })
         .on('loaded.jstree', function() {
